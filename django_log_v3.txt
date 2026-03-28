@@ -1,0 +1,101 @@
+Performing system checks...
+
+DEBUG: Loading dynacuity_backend/urls.py - Flattened Mode
+System check identified no issues (0 silenced).
+March 26, 2026 - 15:26:39
+Django version 6.0.2, using settings 'dynacuity_backend.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/
+[26/Mar/2026 15:27:31] "GET / HTTP/1.1" 200 5769
+[26/Mar/2026 15:27:32] "GET /css/index.css HTTP/1.1" 200 3955
+[26/Mar/2026 15:27:33] "GET /js/sound-manager.js HTTP/1.1" 200 3643
+[26/Mar/2026 15:27:33] "GET /images/logo.png HTTP/1.1" 200 26911
+[26/Mar/2026 15:27:33] "GET /js/app.js HTTP/1.1" 200 665
+Not Found: /favicon.ico
+[26/Mar/2026 15:27:34] "GET /favicon.ico HTTP/1.1" 404 5037
+[26/Mar/2026 15:29:24] "GET /api/health/ HTTP/1.1" 200 47
+[26/Mar/2026 15:33:52] "POST /api/auth/login/ HTTP/1.1" 200 883
+[26/Mar/2026 15:33:52] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:33:52] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:35:13] "GET / HTTP/1.1" 200 5769
+[26/Mar/2026 15:35:13] "GET /js/sound-manager.js HTTP/1.1" 200 3643
+[26/Mar/2026 15:35:13] "GET /css/index.css HTTP/1.1" 200 3955
+[26/Mar/2026 15:35:13] "GET /js/app.js HTTP/1.1" 200 665
+[26/Mar/2026 15:35:13] "GET /images/logo.png HTTP/1.1" 200 26911
+Not Found: /favicon.ico
+[26/Mar/2026 15:35:16] "GET /favicon.ico HTTP/1.1" 404 5060
+[26/Mar/2026 15:35:16] "GET /auth/login.html HTTP/1.1" 200 4939
+Not Found: /favicon.ico
+[26/Mar/2026 15:35:16] "GET /favicon.ico HTTP/1.1" 404 5060
+[26/Mar/2026 15:35:17] "GET /js/auth.js HTTP/1.1" 200 10312
+[26/Mar/2026 15:36:00] "POST /api/auth/login/ HTTP/1.1" 200 883
+[26/Mar/2026 15:36:00] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:36:00] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:36:04] "POST /api/auth/login/ HTTP/1.1" 200 317
+[26/Mar/2026 15:36:04] "GET /dashboard.html HTTP/1.1" 200 13251
+[26/Mar/2026 15:36:04] "GET /css/dashboard.css HTTP/1.1" 200 5246
+[26/Mar/2026 15:36:04] "GET /js/dashboard.js?v=1.2 HTTP/1.1" 200 3366
+[26/Mar/2026 15:36:04] "GET /js/auth.js?v=1.2 HTTP/1.1" 200 10312
+[26/Mar/2026 15:36:05] "GET /api/auth/user/ HTTP/1.1" 200 257
+[26/Mar/2026 15:36:06] "GET /assets/images/avatar.png HTTP/1.1" 200 566266
+[26/Mar/2026 15:36:06] "GET /api/auth/user/ HTTP/1.1" 200 257
+[26/Mar/2026 15:36:07] "GET /settings.html HTTP/1.1" 200 15131
+Not Found: /favicon.ico
+[26/Mar/2026 15:36:07] "GET /favicon.ico HTTP/1.1" 404 5060
+[26/Mar/2026 15:36:07] "GET /js/settings.js HTTP/1.1" 200 8128
+[26/Mar/2026 15:36:07] "GET /api/auth/user/ HTTP/1.1" 200 257
+[26/Mar/2026 15:36:09] "GET /index.html HTTP/1.1" 200 5769
+Not Found: /favicon.ico
+[26/Mar/2026 15:36:12] "GET /favicon.ico HTTP/1.1" 404 5060
+Bad Request: /api/auth/login/
+[26/Mar/2026 15:36:17] "POST /api/auth/login/ HTTP/1.1" 400 43
+[26/Mar/2026 15:36:34] "POST /api/auth/login/ HTTP/1.1" 200 883
+[26/Mar/2026 15:36:34] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:36:35] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:36:35] "GET /assets/images/avatar_male_4.png HTTP/1.1" 200 866469
+[26/Mar/2026 15:37:15] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:37:38] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:37:38] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:37:55] "POST /api/auth/login/ HTTP/1.1" 200 883
+[26/Mar/2026 15:37:56] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:37:56] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:38:00] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:39:28] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:39:28] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:39:45] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:39:45] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:39:47] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:39:47] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:42:50] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:42:53] "GET /games/single-target.html HTTP/1.1" 200 15005
+[26/Mar/2026 15:42:56] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:42:56] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:42:57] "GET /games/index.html HTTP/1.1" 200 13091
+[26/Mar/2026 15:42:57] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:43:00] "GET /games/acuity.html HTTP/1.1" 200 10872
+Not Found: /favicon.ico
+[26/Mar/2026 15:43:00] "GET /favicon.ico HTTP/1.1" 404 5060
+[26/Mar/2026 15:43:36] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:43:36] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:43:36] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:43:54] "GET /progress.html HTTP/1.1" 200 9647
+Not Found: /favicon.ico
+[26/Mar/2026 15:43:54] "GET /favicon.ico HTTP/1.1" 404 5060
+[26/Mar/2026 15:43:54] "GET /js/progress.js HTTP/1.1" 200 3578
+[26/Mar/2026 15:43:55] "GET /api/results/ HTTP/1.1" 200 6937
+[26/Mar/2026 15:43:56] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:43:56] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:43:56] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:43:56] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:44:15] "POST /api/results/ HTTP/1.1" 201 168
+[26/Mar/2026 15:44:18] "GET /api/results/ HTTP/1.1" 200 7106
+[26/Mar/2026 15:44:22] "GET /api/auth/user/ HTTP/1.1" 200 849
+[26/Mar/2026 15:45:24] "GET /api/auth/user/ HTTP/1.1" 200 849
+[26/Mar/2026 15:47:08] "GET /api/auth/user/ HTTP/1.1" 200 849
+[26/Mar/2026 15:52:17] "GET /api/auth/user/ HTTP/1.1" 200 849
+[26/Mar/2026 15:52:37] "POST /api/results/ HTTP/1.1" 201 168
+[26/Mar/2026 15:53:25] "POST /api/results/ HTTP/1.1" 201 168
+[26/Mar/2026 15:58:35] "GET /api/auth/user/ HTTP/1.1" 200 835

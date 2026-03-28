@@ -1,0 +1,31 @@
+Performing system checks...
+
+DEBUG: Loading dynacuity_backend/urls.py - Flattened Mode
+System check identified no issues (0 silenced).
+March 26, 2026 - 15:19:17
+Django version 6.0.2, using settings 'dynacuity_backend.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/
+[26/Mar/2026 15:21:42] "GET / HTTP/1.1" 200 5769
+[26/Mar/2026 15:21:43] "GET /css/index.css HTTP/1.1" 200 3955
+[26/Mar/2026 15:21:43] "GET /js/sound-manager.js HTTP/1.1" 200 3643
+[26/Mar/2026 15:21:43] "GET /images/logo.png HTTP/1.1" 200 26911
+[26/Mar/2026 15:21:44] "GET /js/app.js HTTP/1.1" 200 665
+Not Found: /favicon.ico
+[26/Mar/2026 15:21:46] "GET /favicon.ico HTTP/1.1" 404 5037
+[26/Mar/2026 15:21:58] "GET /auth/login.html HTTP/1.1" 200 4939
+Not Found: /favicon.ico
+[26/Mar/2026 15:21:58] "GET /favicon.ico HTTP/1.1" 404 5037
+[26/Mar/2026 15:21:59] "GET /js/auth.js HTTP/1.1" 200 10312
+[26/Mar/2026 15:22:05] "POST /api/auth/login/ HTTP/1.1" 200 883
+[26/Mar/2026 15:22:06] "GET /dashboard.html HTTP/1.1" 200 13251
+[26/Mar/2026 15:22:06] "GET /css/dashboard.css HTTP/1.1" 200 5246
+[26/Mar/2026 15:22:07] "GET /js/auth.js?v=1.2 HTTP/1.1" 200 10312
+[26/Mar/2026 15:22:07] "GET /assets/images/avatar.png HTTP/1.1" 200 566266
+[26/Mar/2026 15:22:07] "GET /js/dashboard.js?v=1.2 HTTP/1.1" 200 3366
+[26/Mar/2026 15:22:08] "GET /api/auth/user/ HTTP/1.1" 200 823
+[26/Mar/2026 15:22:08] "GET /assets/images/avatar_male_4.png HTTP/1.1" 200 866469
+[26/Mar/2026 15:22:09] "GET /api/auth/user/ HTTP/1.1" 200 823
