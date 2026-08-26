@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "https://dyn-acuity-web-deploy.vercel.app",
+    "https://dyn-acuity-frontend.vercel.app",
 ]
 
 
@@ -216,6 +217,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     "https://dyn-acuity-web-deploy.vercel.app",
+    "https://dyn-acuity-frontend.vercel.app",
 ]
 
 CORS_ALLOW_HEADERS = [
@@ -247,4 +249,4 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER        
