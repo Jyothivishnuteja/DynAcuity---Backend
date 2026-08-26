@@ -4,6 +4,7 @@ Django settings for dynacuity_backend project.
 
 from pathlib import Path
 import os
+import dj_database_url
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,10 +18,14 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = os.environ.get(
-    "ALLOWED_HOSTS",
-    "localhost,127.0.0.1"
-).split(",")
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get(
+        "ALLOWED_HOSTS",
+        "localhost,127.0.0.1,dynacuity-backend.onrender.com"
+    ).split(",")
+    if host.strip()
+]
 
 
 # ============================================================
@@ -106,12 +111,24 @@ WSGI_APPLICATION = "dynacuity_backend.wsgi.application"
 # DATABASE
 # ============================================================
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True,
+        )
     }
-}
+else:
+    # Local development fallback
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # ============================================================
@@ -230,4 +247,4 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER    
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
