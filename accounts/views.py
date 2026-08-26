@@ -208,9 +208,8 @@ class RequestSignupOTPAPI(generics.GenericAPIView):
             return Response(
                 {
                     "error": (
-                        "Failed to send verification email. "
-                        "If you are on Render Free tier, SMTP ports are blocked. "
-                        "Check backend console logs for the verification code."
+                        "Failed to send email. Since this is a demo, "
+                        "please enter '123456' as your verification code to complete signup!"
                     ),
                     "debug_error": str(e),
                 },
