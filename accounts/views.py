@@ -17,6 +17,7 @@ from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
 
 from django.conf import settings
+
 from .models import (
     User,
     GameResult,
@@ -35,64 +36,173 @@ from django.core.mail import send_mail
 # ============================================================
 
 class RequestSignupOTPAPI(generics.GenericAPIView):
+
     serializer_class = RequestSignupOTPSerializer
     permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
 
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        email = serializer.validated_data["email"]
-
-        # Generate 6-digit OTP
-        otp_code = str(random.randint(100000, 999999))
-
-        # Delete old OTPs
-        SignupOTP.objects.filter(email=email).delete()
-
-        # Create new OTP
-        SignupOTP.objects.create(
-            email=email,
-            otp=otp_code
-        )
-
-        subject = "DynAcuity Email Verification Code"
-
-        message = (
-            f"Hello,\n\n"
-            f"Your email verification code for signup is: {otp_code}\n\n"
-            f"Please enter this code in the app to complete your registration."
-        )
+        print("========================================")
+        print("SIGNUP OTP REQUEST RECEIVED")
+        print("Request data:", request.data)
+        print("========================================")
 
         try:
 
+            # ----------------------------------------------------
+            # Validate email
+            # ----------------------------------------------------
+
+            serializer = self.get_serializer(
+                data=request.data
+            )
+
+            serializer.is_valid(
+                raise_exception=True
+            )
+
+            email = serializer.validated_data["email"]
+
+            print("OTP email:", email)
+
+            # ----------------------------------------------------
+            # Generate 6 digit OTP
+            # ----------------------------------------------------
+
+            otp_code = str(
+                random.randint(100000, 999999)
+            )
+
+            print("OTP generated successfully")
+
+            # ----------------------------------------------------
+            # Delete old OTPs
+            # ----------------------------------------------------
+
+            SignupOTP.objects.filter(
+                email=email
+            ).delete()
+
+            print("Old OTPs deleted")
+
+            # ----------------------------------------------------
+            # Create new OTP
+            # ----------------------------------------------------
+
+            SignupOTP.objects.create(
+                email=email,
+                otp=otp_code
+            )
+
+            print("New OTP saved to database")
+
+            # ----------------------------------------------------
+            # Email content
+            # ----------------------------------------------------
+
+            subject = "DynAcuity Email Verification Code"
+
+            message = (
+                f"Hello,\n\n"
+                f"Your email verification code for signup "
+                f"is: {otp_code}\n\n"
+                f"Please enter this code in the app "
+                f"to complete your registration."
+            )
+
+            print("Preparing to send email...")
+
+            print(
+                "EMAIL_HOST_USER:",
+                settings.EMAIL_HOST_USER
+            )
+
+            print(
+                "EMAIL_HOST:",
+                settings.EMAIL_HOST
+            )
+
+            print(
+                "EMAIL_PORT:",
+                settings.EMAIL_PORT
+            )
+
+            print(
+                "EMAIL_USE_TLS:",
+                settings.EMAIL_USE_TLS
+            )
+
+            print(
+                "EMAIL_HOST_PASSWORD configured:",
+                bool(settings.EMAIL_HOST_PASSWORD)
+            )
+
+            # ----------------------------------------------------
+            # Send email
+            # ----------------------------------------------------
+
             send_mail(
-                subject,
-                message,
-                settings.EMAIL_HOST_USER,
-                [email],
+                subject=subject,
+                message=message,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[email],
                 fail_silently=False,
             )
 
+            print("EMAIL SENT SUCCESSFULLY")
+            print("========================================")
+
             return Response(
                 {
-                    "message": f"Verification code sent to {email}."
+                    "message": (
+                        f"Verification code sent to {email}."
+                    )
                 },
                 status=status.HTTP_200_OK
             )
 
         except Exception as e:
 
-            print("Email SMTP Error:", str(e))
+            # ----------------------------------------------------
+            # FULL ERROR DEBUGGING
+            # ----------------------------------------------------
+
+            import traceback
+
+            print("========================================")
+            print("!!! SIGNUP OTP ERROR !!!")
 
             print(
-                f"--- DEVELOPMENT OTP FOR {email}: {otp_code} ---"
+                "Error type:",
+                type(e).__name__
             )
+
+            print(
+                "Error:",
+                str(e)
+            )
+
+            print(
+                "EMAIL_HOST_USER:",
+                settings.EMAIL_HOST_USER
+            )
+
+            print(
+                "EMAIL_HOST_PASSWORD configured:",
+                bool(settings.EMAIL_HOST_PASSWORD)
+            )
+
+            print("FULL TRACEBACK:")
+
+            traceback.print_exc()
+
+            print("========================================")
 
             return Response(
                 {
-                    "error": "Failed to send email.",
+                    "error": (
+                        "Failed to send verification email."
+                    ),
                     "debug_error": str(e),
                 },
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
@@ -659,4 +769,4 @@ class GameResultAPI(
 
         serializer.save(
             user=self.request.user
-        )
+        )         
