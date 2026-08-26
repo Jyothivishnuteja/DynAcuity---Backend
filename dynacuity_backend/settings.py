@@ -18,6 +18,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
+
 ALLOWED_HOSTS = [
     host.strip()
     for host in os.environ.get(
@@ -216,12 +217,12 @@ REST_FRAMEWORK = {
 # CORS
 # ============================================================
 
-CORS_ALLOWED_ORIGINS = [
-    "https://dyn-acuity-web-deploy.vercel.app",
-    "https://dyn-acuity-frontend.vercel.app",
-    "https://dyn-acuity-frontend-4xy6.vercel.app",
-    
-]
+# TEMPORARY TEST:
+# Allow requests from all origins.
+# We will restrict this after confirming the OTP endpoint works.
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 CORS_ALLOW_HEADERS = [
     "accept",
@@ -252,4 +253,4 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER                
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER                    
