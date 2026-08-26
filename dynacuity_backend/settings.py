@@ -217,9 +217,9 @@ REST_FRAMEWORK = {
 # CORS
 # ============================================================
 
-# TEMPORARY TEST:
-# Allow requests from all origins.
-# We will restrict this after confirming the OTP endpoint works.
+# Temporary:
+# Allow all origins so we can diagnose the 500 error.
+# We can restrict this later after the backend works.
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -241,7 +241,9 @@ CORS_ALLOW_HEADERS = [
 # EMAIL / SMTP
 # ============================================================
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = (
+    "django.core.mail.backends.smtp.EmailBackend"
+)
 
 EMAIL_HOST = "smtp.gmail.com"
 
@@ -249,8 +251,59 @@ EMAIL_PORT = 587
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_USER = os.environ.get(
+    "EMAIL_HOST_USER"
+)
 
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_PASSWORD = os.environ.get(
+    "EMAIL_HOST_PASSWORD"
+)
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER                    
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+# ============================================================
+# LOGGING
+# ============================================================
+
+LOGGING = {
+    "version": 1,
+
+    "disable_existing_loggers": False,
+
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+
+    "loggers": {
+
+        # General Django logs
+        "django": {
+            "handlers": [
+                "console"
+            ],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+
+        # Django request errors
+        "django.request": {
+            "handlers": [
+                "console"
+            ],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+
+        # Your accounts application
+        "accounts": {
+            "handlers": [
+                "console"
+            ],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+    },
+}                        
