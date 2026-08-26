@@ -241,9 +241,7 @@ CORS_ALLOW_HEADERS = [
 # EMAIL / SMTP
 # ============================================================
 
-EMAIL_BACKEND = (
-    "django.core.mail.backends.smtp.EmailBackend"
-)
+EMAIL_BACKEND = "dynacuity_backend.email_backends.HybridEmailBackend"
 
 EMAIL_HOST = "smtp.gmail.com"
 
