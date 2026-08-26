@@ -5,28 +5,28 @@ Django settings for dynacuity_backend project.
 from pathlib import Path
 import os
 import dj_database_url
-
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env file (useful for local development)
+load_dotenv(BASE_DIR / '.env')
 
 
 # ============================================================
 # SECURITY
 # ============================================================
 
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or os.getenv("SECRET_KEY") or 'django-insecure-!*c55doq43(x&xg9r39ti+hju4*g63mx3xgdhg5h^cwa!ruxt5'
 
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = os.getenv("DEBUG", "True").lower() == "true"
 
 
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.environ.get(
-        "ALLOWED_HOSTS",
-        "localhost,127.0.0.1,dynacuity-backend-6.onrender.com"
-    ).split(",")
-    if host.strip()
-]
+allowed_hosts_env = os.getenv("ALLOWED_HOSTS")
+if allowed_hosts_env:
+    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",") if host.strip()]
+else:
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1", "dynacuity-backend-6.onrender.com", "*"]
 
 
 # ============================================================
@@ -251,13 +251,8 @@ EMAIL_PORT = 587
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = os.environ.get(
-    "EMAIL_HOST_USER"
-)
-
-EMAIL_HOST_PASSWORD = os.environ.get(
-    "EMAIL_HOST_PASSWORD"
-)
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "vishnutejalingam@gmail.com")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "dhdmwsefucgwirnv")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 

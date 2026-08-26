@@ -4,6 +4,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 
+from rest_framework.exceptions import ValidationError
+
 from .serializers import (
     UserSerializer,
     RegisterSerializer,
@@ -161,6 +163,8 @@ class RequestSignupOTPAPI(generics.GenericAPIView):
                 status=status.HTTP_200_OK
             )
 
+        except ValidationError as val_err:
+            raise val_err
         except Exception as e:
 
             # ----------------------------------------------------
