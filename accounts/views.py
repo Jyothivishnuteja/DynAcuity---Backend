@@ -49,6 +49,8 @@ class RequestSignupOTPAPI(generics.GenericAPIView):
         print("Request data:", request.data)
         print("========================================")
 
+        otp_code = None
+        email = None
         try:
 
             # ----------------------------------------------------
@@ -175,6 +177,7 @@ class RequestSignupOTPAPI(generics.GenericAPIView):
 
             print("========================================")
             print("!!! SIGNUP OTP ERROR !!!")
+            print(f"--- DEVELOPMENT OTP FOR {email}: {otp_code} ---")
 
             print(
                 "Error type:",
@@ -205,7 +208,9 @@ class RequestSignupOTPAPI(generics.GenericAPIView):
             return Response(
                 {
                     "error": (
-                        "Failed to send verification email."
+                        "Failed to send verification email. "
+                        "If you are on Render Free tier, SMTP ports are blocked. "
+                        "Check backend console logs for the verification code."
                     ),
                     "debug_error": str(e),
                 },
